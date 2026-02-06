@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MTN-inspired corporate fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Ensure proper font fallbacks */
+@font-face {
+  font-family: 'Poppins';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Monochrome Black & White Theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    /* Primary - Black */
+    --primary: 0 0% 8%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 0% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 20%;
+
+    --radius: 0.75rem;
+
+    /* Monochrome Palette */
+    --mono-black: 0 0% 5%;
+    --mono-dark: 0 0% 12%;
+    --mono-gray: 0 0% 45%;
+    --mono-light: 0 0% 96%;
+    --mono-white: 0 0% 100%;
+
+    /* Legacy compatibility - now grayscale */
+    --navy: 0 0% 8%;
+    --navy-light: 0 0% 15%;
+    --navy-lighter: 0 0% 20%;
+    --yellow: 0 0% 20%;
+    --yellow-glow: 0 0% 30%;
+    --yellow-dark: 0 0% 15%;
+    --mtn-yellow: 0 0% 20%;
+    --mtn-black: 0 0% 5%;
+
+    /* Monochrome Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 15%), hsl(0 0% 8%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 8%), hsl(0 0% 3%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 5%), hsl(0 0% 12%));
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.06);
+    --shadow-glow: 0 8px 30px hsl(0 0% 0% / 0.15);
+    --shadow-hover: 0 8px 40px hsl(0 0% 0% / 0.1);
+
+    /* Fonts with proper fallbacks */
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 0% 40%;
+  }
+
+  /* Dark mode variant for sections */
+  .dark-section {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+    --border: 0 0% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Monochrome gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient {
+    @apply text-foreground font-bold;
+  }
+
+  /* Monochrome card styles */
+  .mtn-card {
+    @apply bg-card rounded-2xl border border-border;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+  }
+
+  .mtn-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+  }
+
+  /* Subtle glow effect */
+  .yellow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Corporate gradient border */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* MTN Hero section */
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(0 0% 12%) 100%);
+  }
+
+  .hero-dark {
+    background: hsl(0 0% 8%);
+    color: hsl(0 0% 98%);
+  }
+
+  /* Grid pattern for backgrounds */
+  .bg-grid {
+    background-image: 
+      linear-gradient(to right, hsl(0 0% 90%) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 90%) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Dark section utility */
+  .dark-section {
+    background: hsl(0 0% 8%);
+    color: hsl(0 0% 98%);
+  }
+
+  .dark-section .text-muted-foreground {
+    color: hsl(0 0% 65%);
+  }
+
+  /* Smooth card hover */
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
