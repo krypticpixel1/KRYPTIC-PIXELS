@@ -36,7 +36,7 @@ const featuredWork = [
 ];
 
 const stats = [
-  { value: "500+", label: "Projects Completed" },
+  { value: "200+", label: "Projects Completed" },
   { value: "200+", label: "Happy Clients" },
   { value: "5+", label: "Years Experience" },
   { value: "100%", label: "Satisfaction Rate" },

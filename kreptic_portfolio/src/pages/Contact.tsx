@@ -126,7 +126,7 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              Let's Bring Your <span className="text-primary">Vision to Life</span>
+              Let's Bring Your <span className="text-gray-400 ">Vision to Life</span>
             </motion.h1>
             <motion.p 
               className="text-xl text-white/70 leading-relaxed"
@@ -258,7 +258,7 @@ const Contact = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder="John Doe"
+                          placeholder="Micaheal Owusu"
                           required
                           className="bg-background rounded-xl h-12"
                         />
